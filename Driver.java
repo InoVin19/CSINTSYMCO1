@@ -4,6 +4,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
 public class Driver {
     public static void main(String args[]) {
     String edge, numOfVertices;
@@ -18,6 +27,7 @@ public class Driver {
 
         if(scan.hasNextLine()){
           numOfVertices = scan.next();
+            scan.nextLine();
           g = new Graph(Integer.parseInt(numOfVertices)); // Create a graph with 13 vertices
         }
 
@@ -41,6 +51,10 @@ public class Driver {
     System.out.println("Following is Depth First Traversal");
 
     DFS dfs = new DFS(g);
-    dfs.traverse(1); // Start DFS from vertex 1
-  }
+    dfs.traverse(1, 5);
+
+    if (!dfs.goalFound) {
+        System.out.println("\nGoal state not found!");
+    }
+    }
 }
