@@ -1,5 +1,3 @@
-package application;
-	
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,28 +7,36 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.util.*;
 
 public class Driver extends Application {
 
-    private Map<String, List<String>> createGraph(File file) {
+    private Map<String, List<String>> createGraph() {
         // Create your graph here
         Map<String, List<String>> graph = new HashMap<>();
 
-        try (Scanner scanner = new Scanner(file)) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] values = line.split("->");
-                String vertex = values[0].trim();
-                String[] neighbors = values[1].split(",");
-                graph.put(vertex, Arrays.asList(neighbors));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        graph.put("Oradea", Arrays.asList("Zerind", "Sibiu"));
+        graph.put("Zerind", Collections.singletonList("Arad"));
+        graph.put("Sibiu", Arrays.asList("Arad", "Fagaras", "Rimnicu Vilcea"));
+        graph.put("Arad", Arrays.asList("Timisoara"));
+        graph.put("Fagaras", Arrays.asList("Bucharest"));
+        graph.put("Rimnicu Vilcea", Arrays.asList("Pitesti", "Craiova"));
+        graph.put("Timisoara", Arrays.asList("Lugoj"));
+        graph.put("Lugoj", Arrays.asList("Mehadia"));
+        graph.put("Mehadia", Arrays.asList("Dobreta"));
+        graph.put("Dobreta", Arrays.asList("Craiova"));
+        graph.put("Craiova", Arrays.asList("Pitesti"));
+        graph.put("Pitesti", Arrays.asList("Bucharest"));
+        graph.put("Bucharest", Arrays.asList("Giurgiu", "Urziceni"));
+        graph.put("Giurgiu", Arrays.asList());
+        graph.put("Urziceni", Arrays.asList("Vaslui", "Hirsova"));
+        graph.put("Vaslui", Arrays.asList("Lasi"));
+        graph.put("Lasi", Arrays.asList("Neamt"));
+        graph.put("Neamt", Arrays.asList());
+        graph.put("Hirsova", Arrays.asList("Eforie"));
+        graph.put("Eforie", Arrays.asList());
+
 
         return graph;
     }
@@ -75,16 +81,7 @@ public class Driver extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-    	FileChooser choose = new FileChooser();
-        choose.setTitle("Select Input File");
-        choose.getExtensionFilters().add(new ExtensionFilter("Text Files", "*.txt"));
-
-        File input = choose.showOpenDialog(primaryStage);
-        if (input == null) {
-            return;
-        }
-    	
-        Map<String, List<String>> graph = createGraph(input);
+        Map<String, List<String>> graph = createGraph();
         String start = "Sibiu";
         String goal = "Bucharest";
 
