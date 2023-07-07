@@ -1,0 +1,20 @@
+Oradea -> Zerind, Sibiu
+Zerind -> Arad
+Sibiu -> Arad, Fagaras, Rimnicu Vilcea
+Arad -> Timisoara
+Fagaras -> Bucharest
+Rimnicu Vilcea -> Pitesti, Craiova
+Timisoara -> Lugoj
+Lugoj -> Mehadia
+Mehadia -> Dobreta
+Dobreta -> Craiova
+Craiova -> Pitesti
+Pitesti -> Bucharest
+Bucharest -> Giurgiu, Urziceni
+Giurgiu ->
+Urziceni -> Vaslui, Hirsova
+Vaslui -> Iasi
+Iasi -> Neamt
+Neamt ->
+Hirsova -> Eforie
+Eforie ->
