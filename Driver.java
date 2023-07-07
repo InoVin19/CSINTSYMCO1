@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import java.util.*;
 
+//code
+
 public class Driver extends Application {
 
     private Map<String, List<String>> createGraph() {
@@ -83,7 +85,7 @@ public class Driver extends Application {
     public void start(Stage primaryStage) {
         Map<String, List<String>> graph = createGraph();
         String start = "Sibiu";
-        String goal = "Bucharest";
+        String goal = "Animo";
 
         TreeItem<String> root = buildTree(start, graph, new HashSet<>());
         TreeView<String> treeView = new TreeView<>(root);
